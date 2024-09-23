@@ -2,5 +2,8 @@
 
 {% block content %}
 <h2>Avaliable Course</h2>
+{% for item in all %}
+ {{ item.course_code}} {{ item.course_name }} {{ item.seat_is_full }}<br/>
+{% endfor %}
 {% endblock %}
 
