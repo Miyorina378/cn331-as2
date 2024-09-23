@@ -1,0 +1,33 @@
+
+
+{$ site} 
+
+{% block site_title %}Login | {% endblock %}
+
+{% block content %}
+<section class="content-section content-section-single">
+  <div class="content-container content-container-narrow">
+    <h3 class="content-title">Login</h3>
+    <form action="{% url 'register' %}" method="POST">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="form-field">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.username.errors }}
+      </div>
+      <div class="form-field">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+        <div class="form-field">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+          </div>
+        <button class="button button-primary" type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

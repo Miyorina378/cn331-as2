@@ -1,4 +1,5 @@
 from django.http import HttpRequest, HttpResponseRedirect
+from users.forms import RegisterForm
 from django.shortcuts import render,redirect
 from django.contrib.auth import login, logout
 from django.urls import reverse
@@ -10,7 +11,7 @@ def register(request: HttpRequest):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return HttpResponseRedirect(reverse("home"))
+            return HttpResponseRedirect(reverse("courses"))
     else:
         form = RegisterForm()
 
