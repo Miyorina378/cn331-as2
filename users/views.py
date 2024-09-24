@@ -1,4 +1,5 @@
 from django.http import HttpRequest, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from users.forms import RegisterForm
 from django.shortcuts import render,redirect
 from django.contrib.auth import login, logout
@@ -23,3 +24,7 @@ def register(request: HttpRequest):
 def logout_user(request):
     logout(request)
     return redirect('courses')
+
+@login_required
+def dashboard(request: HttpRequest):
+    return render(request, 'users/dashboard.html')

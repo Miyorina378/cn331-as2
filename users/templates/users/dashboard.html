@@ -1,0 +1,9 @@
+{% extends 'course/components/base.html' %}
+<title>Dashboard | TU Quota</title>
+
+{% block content %}
+<div>
+    Hello, {{ user.username }}
+    <a href="{% url 'password_change' %}">Change Password</a>
+</div>
+{% endblock %}
