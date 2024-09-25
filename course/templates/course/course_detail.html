@@ -1,0 +1,10 @@
+{% extends 'course/components/base.html' %}
+{% block site_title %} About | {% endblock %}
+{% block content %}
+    <h2>{{course_detail.course_code}}</h2>
+    <h2>{{course_detail.course_name}}</h2>
+    <h4>เนื้อหา: {{course_detail.course_description}}</h4>
+    <h4>ภาคเรียนที่: {{course_detail.semester}}</h4>
+    <h4>Year {{course_detail.year}}</h4>
+    <h4>จำนวนที่นั่ง: {{course_detail.seat}}</h4>
+{% endblock %}

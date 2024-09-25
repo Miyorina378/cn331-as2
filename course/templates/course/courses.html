@@ -2,8 +2,45 @@
 
 {% block content %}
 <h2>Avaliable Course</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Available Seats</th>
+            <th>Detail</th>
+            <th>Enroll</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in all %}
+            <tr>
+                <td>{{ item.course_code }}</td>
+                <td>{{ item.course_name }}</td>
+                <td>{{ item.seat }}</td>
+                <td>
+            <a href="{% url 'course_detail' item.course_code %}">View Course Details</a>
+            <form method="post" action="{% url 'enroll_in_course' item.id %}">
+                <td>
+                    {% if item.seat > 0 %}
+                        <form method="POST" action="{% url 'enroll_in_course' item.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Enroll</button>
+                        </form>
+                    {% else %}
+                        <span>Full</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">No courses available.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% for item in all %}
- {{ item.course_code}} {{ item.course_name }} {{ item.seat_is_full }}<br/>
+ {{ item.course_code}} {{ item.course_name }} {{ item.seat }}<br/>
 {% endfor %}
 {% endblock %}
 
