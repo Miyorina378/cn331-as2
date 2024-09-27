@@ -20,10 +20,10 @@
                 <td>{{ item.seat }}</td>
                 <td>
             <a href="{% url 'course_detail' item.course_code %}">View Course Details</a>
-            <form method="post" action="{% url 'enroll_in_course' item.id %}">
+            <form method="post" action="{% url 'enroll_in_course' item.course_code %}">
                 <td>
                     {% if item.seat > 0 %}
-                        <form method="POST" action="{% url 'enroll_in_course' item.id %}">
+                        <form method="POST" action="{% url 'enroll_in_course' item.course_code %}">
                             {% csrf_token %}
                             <button type="submit">Enroll</button>
                         </form>
@@ -39,8 +39,5 @@
         {% endfor %}
     </tbody>
 </table>
-{% for item in all %}
- {{ item.course_code}} {{ item.course_name }} {{ item.seat }}<br/>
-{% endfor %}
 {% endblock %}
 
