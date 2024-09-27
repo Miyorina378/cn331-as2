@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpRequest
 from django.contrib import messages
-from .models import Course
+from .models import Course, CourseEnrollment
 from django.contrib.auth.decorators import login_required
 
-# Retrieve all courses
+# Retrieve all courses 
 course_database = Course.objects.all
 
 def courses(request: HttpRequest):
@@ -14,7 +14,6 @@ def about(request: HttpRequest):
     return render(request, 'course/about.html')
 
 def course_detail(request, course_code):
-    # Retrieve a single course by course_code
     single_course = get_object_or_404(Course, course_code=course_code)
     return render(request, 'course/course_detail.html', context={'single_course': single_course})
 
@@ -47,3 +46,4 @@ def unenroll_from_course(request, course_code):
     
     # Redirect back to the courses page after processing
     return redirect('courses')
+

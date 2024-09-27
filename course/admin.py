@@ -10,5 +10,9 @@ class CourseEnrollmentAdmin(admin.ModelAdmin):
     list_display = ['user', 'course', 'enroll_date']
     search_fields = ['course']
     sortable_by = ['user', 'course', 'enroll_date']
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).filter(course__isnull=False)
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(CourseEnrollment, CourseEnrollmentAdmin)

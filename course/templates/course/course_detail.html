@@ -1,10 +1,10 @@
 {% extends 'course/components/base.html' %}
 {% block site_title %} About | {% endblock %}
 {% block content %}
-    <h2>{{course_detail.course_code}}</h2>
-    <h2>{{course_detail.course_name}}</h2>
-    <h4>เนื้อหา: {{course_detail.course_description}}</h4>
-    <h4>ภาคเรียนที่: {{course_detail.semester}}</h4>
-    <h4>ปีการศึกษาที่ {{course_detail.year}}</h4>
-    <h4>จำนวนที่นั่ง: {{course_detail.seat}}</h4>
+    <h2>{{single_course.course_code}}</h2>
+    <h2>{{single_course.course_name}}</h2>
+    <h4>เนื้อหา: {{single_course.course_description}}</h4>
+    <h4>ภาคเรียนที่: {{single_course.semester}}</h4>
+    <h4>ปีการศึกษาที่ {{single_course.year}}</h4>
+    <h4>จำนวนที่นั่ง: {{single_course.seat}}</h4>
 {% endblock %}

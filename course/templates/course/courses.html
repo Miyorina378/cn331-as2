@@ -7,7 +7,7 @@
         <tr>
             <th>Course Code</th>
             <th>Course Name</th>
-            <th>Available Seats</th>
+            <th>Seats</th>
             <th>Detail</th>
             <th>Enroll</th>
         </tr>
@@ -22,14 +22,21 @@
             <a href="{% url 'course_detail' item.course_code %}">View Course Details</a>
             <form method="post" action="{% url 'enroll_in_course' item.course_code %}">
                 <td>
-                    {% if item.seat > 0 %}
-                        <form method="POST" action="{% url 'enroll_in_course' item.course_code %}">
-                            {% csrf_token %}
-                            <button type="submit">Enroll</button>
-                        </form>
-                    {% else %}
-                        <span>Full</span>
-                    {% endif %}
+                {% if request.user in item.users.all %}
+                    <span>Enrolled</span>
+                {% elif item.seat == 0 and item.seat_is_full == True %}
+                    <span>Full</span>
+                {% elif item.seat_is_full == True %}
+                    <span>Closed</span>
+                {% elif item.seat > 0 %}
+                    <form method="POST" action="{% url 'enroll_in_course' item.course_code %}">
+                        {% csrf_token %}
+                        <button type="submit">Enroll</button>
+                    </form>
+                {% else %}
+
+                    <span>Full</span>
+                {% endif %}
                 </td>
             </tr>
         {% empty %}

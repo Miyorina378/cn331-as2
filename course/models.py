@@ -19,32 +19,17 @@ class Course(models.Model):
       return self.course_code + ' | ' + self.course_name
     
     def enroll_student(self, user):
-        # Check if the user is already enrolled through the `CourseEnrollment` table
         if CourseEnrollment.objects.filter(user=user, course=self).exists():
             return False
-
         if self.seat > 0 and not self.seat_is_full:
-            # Create a new CourseEnrollment entry
             CourseEnrollment.objects.create(user=user, course=self)
             self.seat -= 1
-            if self.seat == 0:
+            if self.seat == 0: 
                 self.seat_is_full = True
             self.save()
             return True
         return False
-    def unenroll_student(self, user):
-        # Check if the user is enrolled in the course
-        enrollment = CourseEnrollment.objects.filter(user=user, course=self)
-        if enrollment.exists():
-            # Remove the CourseEnrollment entry
-            enrollment.delete()
-            self.seat += 1
-            if self.seat > 0:
-                self.seat_is_full = False
-            self.save()
-            return True
-        return False
-
+    
 class CourseEnrollment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -57,7 +42,6 @@ class CourseEnrollment(models.Model):
 @receiver(post_delete, sender=CourseEnrollment)
 def increase_seat_on_unenroll(sender, instance, **kwargs):
     course = instance.course
-    # Increase the seat count
     course.seat += 1
     if course.seat > 0:
         course.seat_is_full = False
