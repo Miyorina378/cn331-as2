@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'RSU_Regular';
+    font-style: normal;
+    font-weight: 300;
+    src: local(''),
+    url('fonts/RSU_Regular.ttf') format('truetype');
+}
+
+html {
+    font-family: 'RSU_Regular', 'sans-serif';
+    font-size: 1.5rem;
+    color: #2E2E2E;
+}
+
+.navbar {
+    background-color: rgb(231, 157, 20);
+    border-bottom: 1px solid #ffffff; /* Solid border for separation */
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    height: 50px; /* Set height of the navbar */
+    padding: 0 20px; /* Add padding to the left and right */
+    position: relative; /* To position the center text */
+}
+
+.navbar_link {
+    float: left;
+    color: #302f2f;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    display: flex;
+    padding: 0px 10px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+.navbar_right{
+    float: right;
+}
+.navbar_link:hover {
+    transform: scale(1.05);
+}
+
+footer{
+    background-color: #141414;
+}
+.footerContainer{
+    width: 100%;
+    padding: 70px 30px 20px;
+}
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+.socialIcons a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: rgb(14, 13, 13);
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.socialIcons a i{
+    font-size: 2em;
+    color: rgb(191, 16, 226);
+    opacity: 0.9;
+}
+.socialIcons a:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+.socialIcons a:hover i{
+    color:aliceblue;
+    transition: 0.5s;
+}
+
+.footerBottom{
+    padding: 5px;
+    background-color: black;
+    text-align: center;
+}
+.footerBottom p{
+    color: white;
+}
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    font-weight: 400;
+}
