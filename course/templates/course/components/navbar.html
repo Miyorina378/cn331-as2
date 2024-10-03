@@ -3,13 +3,11 @@
         <a class = "navbar_link">Quota System</a>
         <a class = "navbar_link" href="{% url 'courses' %}">Course</a>
         <a class = "navbar_link" href="{% url 'about' %}">About</a>
-    <div class = "navbar_right">
     {% if user.is_authenticated %}
         <a class = "navbar_link" href ="{%url 'dashboard' %}"><span>{{ user.username }}</span></a>
         <a class = "navbar_link" href ="{% url 'logout' %}">Logout</a>
     {% else %}
         <a class = "navbar_link" href = "{% url 'login' %}">Login</a>
-        <a class = "navbar_link" href = "{% url 'register'%}">Register</a>
-    </div>
+        <a class = "navbar_link" href = "{% url 'register'%}">Register</a> 
     {% endif %}
 </nav> 

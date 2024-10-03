@@ -1,8 +1,8 @@
 {% extends 'course/components/base.html' %}
-<title>Dashboard | TU Quota</title>
+{% block site_title %}{{ user.username }}'s dashboard | TU Quota {% endblock %}
 
 {% block content %}
-<div>
+<div class = dashboard>
     Hello, {{ user.username }}
     <a href="{% url 'password_change' %}">Change Password</a>
 </div>
@@ -12,11 +12,14 @@
 
 {% if enrolled_courses %}
     <table>
-        <tr>
+        <thead>
+          <tr>
             <th>Course Code</th>
             <th>Course Name</th>
             <th>Withdraw</th>
-        </tr>
+          </tr>
+        </thead>
+        <tbody>
         {% for course in enrolled_courses %}
         <tr>
             <td>{{ course.course_code }}</td>
@@ -29,6 +32,7 @@
             </td>
         </tr>
         {% endfor %}
+        </tbody>
     </table>
 {% else %}
     <p>You have not enrolled in any courses yet.</p>

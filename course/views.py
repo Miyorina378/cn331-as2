@@ -27,7 +27,7 @@ def enroll_in_course(request, course_code):
         if course.enroll_student(request.user):
             messages.success(request, "You have successfully enrolled in the course.")
         else:
-            messages.error(request, "Enrollment failed. The course may be full.")
+            messages.error(request, "Enrollment failed. The course may be full or you may already be enrolled.")
 
     # Redirect back to the courses page after processing
     return redirect('courses')

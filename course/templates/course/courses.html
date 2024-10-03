@@ -1,14 +1,14 @@
 {% extends 'course/components/base.html' %}
 
 {% block content %}
-<h2>Avaliable Course</h2>
+<h2>Available Courses</h2>
 <table>
     <thead>
         <tr>
             <th>Course Code</th>
             <th>Course Name</th>
             <th>Seats</th>
-            <th>Detail</th>
+            <th>Details</th>
             <th>Enroll</th>
         </tr>
     </thead>
@@ -19,32 +19,28 @@
                 <td>{{ item.course_name }}</td>
                 <td>{{ item.seat }}</td>
                 <td>
-            <a href="{% url 'course_detail' item.course_code %}">View Course Details</a>
-            <form method="post" action="{% url 'enroll_in_course' item.course_code %}">
+                    <a href="{% url 'course_detail' item.course_code %}">View Course Details</a>
+                </td>
                 <td>
-                {% if request.user in item.Users.all %}
-                    <span>Enrolled</span>
-                {% elif item.seat == 0 and item.seat_is_full == True %}
-                    <span>Full</span>
-                {% elif item.seat_is_full == True %}
-                    <span>Closed</span>
-                {% elif item.seat > 0 %}
-                    <form method="POST" action="{% url 'enroll_in_course' item.course_code %}">
+                    <form method="post" action="{% url 'enroll_in_course' item.course_code %}">
                         {% csrf_token %}
-                        <button type="submit">Enroll</button>
+                        {% if request.user in item.Users.all %}
+                            <span>Enrolled</span>
+                        {% elif item.seat > 0 and not item.seat_is_full %}
+                            <button type="submit">Enroll</button>
+                        {% else %}
+                            <span>Full</span>
+                        {% endif %}
                     </form>
-                {% else %}
-
-                    <span>Full</span>
-                {% endif %}
                 </td>
             </tr>
         {% empty %}
             <tr>
-                <td colspan="4">No courses available.</td>
+                <td colspan="5">No courses available.</td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
 {% endblock %}
+
 
