@@ -6,17 +6,33 @@
     url('fonts/RSU_Regular.ttf') format('truetype');
 }
 
+/* Setup */
+
 html {
     font-family: 'RSU_Regular', 'sans-serif';
     font-size: 1.5rem;
     color: #2E2E2E;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
+
+h2{
+    margin: 20px;
+}
+
+p{
+    margin: 10px;
+}
+
+/* Navbar */
+
 .navbar {
     background-color: rgb(231, 157, 20);
     border-bottom: 1px solid #ffffff; 
@@ -26,6 +42,7 @@ html {
     height: 50px;
     padding: 0 20px;
     position: relative;
+    width: 100%;
 }
 
 .navbar_link {
@@ -45,6 +62,8 @@ html {
     transform: scale(1.05);
 }
 
+/* Table */
+
 table{
     border-radius: 10px 10px 0 0;
     overflow: hidden;
@@ -52,6 +71,7 @@ table{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin: 25px;
     min-width: 400px;
+    max-width: 100%;
 }
 table thead tr{
     background-color: rgb(235, 196, 70);
@@ -70,8 +90,11 @@ table tbody tr:last-of-type{
     border-bottom: 2px solid rgb(235, 196, 70);
 }
 
+/* Footer */
+
 footer{
-    position: fixed;
+    margin-top: auto;
+    position: absolute;
     width: 100%;
     left: 0;
     bottom: 0;
@@ -80,6 +103,7 @@ footer{
 .footerContainer{
     width: 100%;
     padding: 70px 30px 20px;
+    box-sizing: border-box;
 }
 .socialIcons{
     display: flex;
@@ -121,4 +145,28 @@ footer{
     font-weight: 400;
 }
 
+/* About */
+.video {
+    margin: 10px auto; 
+    width: 50%;
+    max-width: 800px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+  
+/* Dashboard */
+.dashboard{
+    margin: 10px;
+}
 
+/* Login & Register */
+.form-field{
+    width: 300px; 
+    padding: 5px; 
+    border-radius: 4px; 
+    box-sizing: border-box;  
+    margin-bottom: 5px;  
+}

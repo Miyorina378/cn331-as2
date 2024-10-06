@@ -19,31 +19,20 @@ def course_detail(request, course_code):
 
 @login_required
 def enroll_in_course(request, course_code):
-    # Get the course object using course_code
     course = get_object_or_404(Course, course_code=course_code)
 
     if request.method == 'POST':
-        # Try to enroll the user
         if course.enroll_student(request.user):
             messages.success(request, "You have successfully enrolled in the course.")
         else:
             messages.error(request, "Enrollment failed. The course may be full or you may already be enrolled.")
-
-    # Redirect back to the courses page after processing
     return redirect('courses')
 
 @login_required
 def unenroll_from_course(request, course_code):
-    # Get the course object using course_code
     course = get_object_or_404(Course, course_code=course_code)
 
     if request.method == 'POST':
-        # Try to unenroll the user
-        if course.unenroll_student(request.user):
-            messages.success(request, "You have successfully unenrolled from the course.")
-        else:
-            messages.error(request, "You were not enrolled in this course.")
-    
-    # Redirect back to the courses page after processing
+        course.unenroll_student(request.user)
     return redirect('courses')
 

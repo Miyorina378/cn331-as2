@@ -28,6 +28,8 @@
                             <span>Enrolled</span>
                         {% elif item.seat > 0 and not item.seat_is_full %}
                             <button type="submit">Enroll</button>
+                        {% elif item.seat > 0 and item.seat_is_full %}
+                            <span>Closed</span>
                         {% else %}
                             <span>Full</span>
                         {% endif %}

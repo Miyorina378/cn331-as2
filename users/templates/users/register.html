@@ -1,11 +1,12 @@
+{% extends 'course/components/base.html' %}
 
-<title>Register | TU Quota</title>
+{% block site_title %}Register - {% endblock %}
 
 {% block content %}
 <section class="content-section content-section-single">
-  <div class="content-container content-container-narrow">
-    <h3 class="content-title">Login</h3>
-    <form action="{% url 'register' %}" method="POST">
+  <div class="content-container content-container-narrow form-container">
+    <h3 class="content-title">Register</h3>
+    <form action="{% url 'register' %}" method="POST" class="register-form">
       {% csrf_token %}
       {{ form.non_field_errors }}
       <div class="form-field">
@@ -17,13 +18,18 @@
         {{ form.password1.label_tag }}
         {{ form.password1 }}
         {{ form.password1.errors }}
-        <div class="form-field">
-            {{ form.password2.label_tag }}
-            {{ form.password2 }}
-            {{ form.password2.errors }}
-          </div>
+      </div>
+      <div class="form-field">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+      </div>
+      <div class="form-field">
         <button class="button button-primary" type="submit">Register</button>
       </div>
+      <p class="login-link">
+        <a href="{% url 'login' %}" class="no-underline">Login</a>
+      </p>
     </form>
   </div>
 </section>

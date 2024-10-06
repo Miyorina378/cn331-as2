@@ -43,8 +43,4 @@ def unenroll_from_course(request, course_code):
         if course.seat > 0 and course.seat < 2:
             course.seat_is_full = False
         course.save()
-        messages.success(request, f"You have successfully withdraw from {course.course_name}.")
-    else:
-        messages.error(request, "You are not enrolled in this course.")
-
     return redirect('dashboard') 
