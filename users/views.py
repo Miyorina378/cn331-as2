@@ -18,7 +18,6 @@ def register(request: HttpRequest):
     else:
         form = RegisterForm()
 
-
     context = {"form": form}
     return render(request, "users/register.html", context)
 

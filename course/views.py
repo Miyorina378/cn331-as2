@@ -28,11 +28,5 @@ def enroll_in_course(request, course_code):
             messages.error(request, "Enrollment failed. The course may be full or you may already be enrolled.")
     return redirect('courses')
 
-@login_required
-def unenroll_from_course(request, course_code):
-    course = get_object_or_404(Course, course_code=course_code)
 
-    if request.method == 'POST':
-        course.unenroll_student(request.user)
-    return redirect('courses')
 
